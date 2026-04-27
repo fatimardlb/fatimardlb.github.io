@@ -1,0 +1,18 @@
+title: Fátima Ruiz de la Bastida
+description: Product Data Scientist & ML Engineer
+theme: minima
+
+markdown: kramdown
+
+header_pages:
+  - experience.md
+  - projects.md
+  - about.md
+
+author:
+  name: Fátima Ruiz de la Bastida
+  email: fatimaruizdelabastida@gmail.com
+
+social_links:
+  github: fatimardlb
+  linkedin: fátima-ruiz-de-la-bastida-b9364a205
