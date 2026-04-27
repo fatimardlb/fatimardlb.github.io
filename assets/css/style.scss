@@ -1,0 +1,377 @@
+---
+---
+
+@import "minima";
+
+/* ============================================================
+   DARK PROFESSIONAL THEME – Fátima's Portfolio
+   ============================================================ */
+
+:root {
+  --bg-primary:    #0d1117;
+  --bg-secondary:  #161b22;
+  --bg-card:       #1c2128;
+  --border:        #30363d;
+  --text-primary:  #e6edf3;
+  --text-secondary:#8b949e;
+  --text-muted:    #6e7681;
+  --accent:        #58a6ff;
+  --accent-hover:  #79b8ff;
+  --accent-green:  #3fb950;
+  --accent-purple: #d2a8ff;
+  --accent-yellow: #e3b341;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --radius: 8px;
+  --t: 0.2s ease;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.site-header {
+  background: rgba(13, 17, 23, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: 56px;
+  box-shadow: 0 1px 32px rgba(0, 0, 0, 0.6);
+  animation: fadeInDown 0.45s ease both;
+}
+
+.site-title,
+.site-title:visited {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.2px;
+  transition: color var(--t);
+}
+.site-title:hover {
+  color: var(--accent) !important;
+  text-decoration: none;
+}
+
+/* Nav links with animated gradient underline */
+.site-nav .page-link {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color var(--t);
+}
+.site-nav .page-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.site-nav .page-link:hover {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.site-nav .page-link:hover::after { width: 100%; }
+.site-nav .menu-icon > svg path { fill: var(--text-secondary); }
+
+@media (max-width: 600px) {
+  .site-nav {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .site-nav .page-link { color: var(--text-secondary); }
+}
+
+/* ============================================================
+   PAGE / POST LAYOUT
+   ============================================================ */
+
+.page-content {
+  background: var(--bg-primary);
+  padding: 3rem 0 5rem;
+}
+.wrapper { max-width: 900px; }
+
+.post { animation: fadeInUp 0.5s ease both; }
+
+.post-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Page title (from YAML front-matter) */
+.post-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: transparent;
+  background: linear-gradient(135deg, #e6edf3 0%, #58a6ff 60%, #d2a8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 1.25;
+}
+
+/* Hide the redundant "Home" heading on index – only when page
+   also contains an h1 in content (CSS :has, widely supported) */
+.post:has(.post-content h1) .post-header {
+  display: none;
+}
+
+/* ============================================================
+   CONTENT TYPOGRAPHY
+   ============================================================ */
+
+/* h1 inside content (used as hero name on home page) */
+.post-content h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: transparent;
+  background: linear-gradient(270deg, #e6edf3, #58a6ff, #d2a8ff, #79b8ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* h2 – section label style */
+.post-content h2 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* h3 – sub-section */
+.post-content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* h4 – label */
+.post-content h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.post-content p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+.post-content strong { color: var(--text-primary); font-weight: 600; }
+.post-content em     { color: var(--text-muted); }
+
+.post-content a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(88, 166, 255, 0.3);
+  transition: color var(--t), border-color var(--t);
+}
+.post-content a:hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
+}
+
+/* Lists */
+.post-content ul,
+.post-content ol {
+  color: var(--text-secondary);
+  padding-left: 1.5rem;
+}
+.post-content li { margin-bottom: 0.4rem; line-height: 1.7; }
+.post-content ul li::marker { color: var(--accent); }
+.post-content ol li::marker { color: var(--accent); font-weight: 700; }
+
+/* Divider */
+.post-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 3rem 0;
+}
+
+/* ============================================================
+   BLOCKQUOTE  (used for "Note" in projects page)
+   ============================================================ */
+
+.post-content blockquote {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-yellow);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: normal;
+}
+.post-content blockquote p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.post-content blockquote strong { color: var(--accent-yellow); }
+
+/* ============================================================
+   CODE
+   ============================================================ */
+
+.post-content code {
+  background: var(--bg-card);
+  color: var(--accent-green);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.15em 0.45em;
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+}
+.post-content pre {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+.post-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.85em;
+  color: var(--accent-green);
+}
+
+/* ============================================================
+   EXPERIENCE – date badge
+   Targets <strong> that immediately follows an h2
+   (the "Jul 2025 – Present" pattern)
+   ============================================================ */
+
+.post-content h2 + p > strong:first-child {
+  display: inline-block;
+  background: rgba(88, 166, 255, 0.08);
+  border: 1px solid rgba(88, 166, 255, 0.25);
+  color: var(--accent);
+  border-radius: 20px;
+  padding: 0.15rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   SKILLS TAG LINE  (last p in each project section)
+   ============================================================ */
+
+/* Style any paragraph that starts with bold "Skills" text */
+.post-content p strong:first-child {
+  /* leave default – handled by general strong rule */
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  color: var(--text-muted);
+}
+.footer-col-wrapper { color: var(--text-muted); font-size: 0.875rem; }
+.footer-col         { color: var(--text-muted); }
+.site-footer a,
+.site-footer a:visited { color: var(--text-secondary); }
+.site-footer a:hover   { color: var(--accent); text-decoration: none; }
+.contact-list a,
+.social-media-list a   { color: var(--text-secondary) !important; }
+.contact-list a:hover,
+.social-media-list a:hover { color: var(--accent) !important; }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* Scroll-reveal – only active when JS has run (.js on <html>) */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   SELECTION & SCROLLBAR
+   ============================================================ */
+
+::selection {
+  background: rgba(88, 166, 255, 0.25);
+  color: var(--text-primary);
+}
+
+::-webkit-scrollbar           { width: 8px; height: 8px; }
+::-webkit-scrollbar-track     { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb     { background: var(--bg-card); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 600px) {
+  .post-content h1 { font-size: 1.75rem; }
+  .post-title      { font-size: 1.5rem; }
+}

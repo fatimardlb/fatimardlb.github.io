@@ -33,6 +33,3 @@ I work closely with product, engineering, and commercial teams in Agile environm
 - Generated **€200K+ revenue** through data-enabled products  
 - Designed **self‑serve dashboards** reducing ad‑hoc requests  
 - 1st place **Boehringer Ingelheim AI Award** (national level)
-
-👉 See **Projects** for case studies.
-``
